@@ -1,0 +1,5 @@
+/**
+ * @module preload
+ */
+
+import './versions';

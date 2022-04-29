@@ -1,0 +1,51 @@
+{
+  "name": "podman-installer",
+  "private": false,
+  "engines": {
+    "node": ">=v16.13",
+    "yarn": ">=1.22"
+  },
+  "main": "packages/main/dist/index.cjs",
+  "scripts": {
+    "build": "yarn run build:main && yarn run build:preload && yarn run build:renderer",
+    "build:main": "cd ./packages/main && vite build",
+    "build:preload": "cd ./packages/preload && vite build",
+    "build:renderer": "cd ./packages/renderer && vite build",
+    "compile": "cross-env MODE=production yarn run build && electron-builder build --config .electron-builder.config.js --dir --config.asar=false",
+    "test": "yarn run test:main && yarn run test:preload && yarn run test:renderer && yarn run test:e2e",
+    "test:e2e": "yarn run build && vitest run",
+    "test:main": "vitest run -r packages/main --passWithNoTests",
+    "test:preload": "vitest run -r packages/preload --passWithNoTests",
+    "test:renderer": "vitest run -r packages/renderer --passWithNoTests",
+    "watch": "node scripts/watch.js",
+    "lint": "eslint . --ext js,ts,svelte",
+    "typecheck:main": "tsc --noEmit -p packages/main/tsconfig.json",
+    "typecheck:preload": "tsc --noEmit -p packages/preload/tsconfig.json",
+    "typecheck:renderer": "svelte-check --tsconfig packages/renderer/tsconfig.json",
+    "typecheck": "yarn run typecheck:main && yarn run typecheck:preload && yarn run typecheck:renderer"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
+    "@tsconfig/svelte": "^2.0.1",
+    "@typescript-eslint/eslint-plugin": "5.12.0",
+    "cross-env": "7.0.3",
+    "electron": "17.0.1",
+    "electron-builder": "22.14.13",
+    "electron-devtools-installer": "3.2.0",
+    "eslint": "8.9.0",
+    "happy-dom": "2.33.1",
+    "nano-staged": "0.5.0",
+    "playwright": "1.19.1",
+    "simple-git-hooks": "2.7.0",
+    "svelte": "^3.44.1",
+    "svelte-check": "^2.2.8",
+    "svelte-preprocess": "^4.9.8",
+    "tslib": "^2.3.1",
+    "typescript": "4.5.5",
+    "vite": "2.8.3",
+    "vitest": "0.3.6"
+  },
+  "dependencies": {
+    "electron-updater": "4.6.5"
+  }
+}
