@@ -2,7 +2,7 @@ import {app, dialog, ipcMain} from 'electron';
 import './security-restrictions';
 import {restoreOrCreateWindow} from '/@/mainWindow';
 import * as sudo from 'sudo-prompt';
-import { initIpc, startCheck } from './ipc-main';
+import { initIpc } from './ipc-main';
 
 
 /**
@@ -72,7 +72,7 @@ ipcMain.on('run-sudo', async () => {
   try {
     initIpc().then(async (api) => {
       const res = await api.startCheck();
-      dialog.showMessageBox({title: 'Sudo', message: `Current sudo user: ${res}`});
+      dialog.showMessageBox({title: 'Sudo', message: `Current user: ${res}`});
       api.exit();
     });
 

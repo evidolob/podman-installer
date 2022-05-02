@@ -1,5 +1,6 @@
 import ipc from 'node-ipc';
 import * as cp from 'child_process';
+import * as os from 'node:os';
 
 export function connectToMain(): void {
   ipc.config.id = 'sudo-installer';
@@ -35,8 +36,16 @@ export function connectToMain(): void {
     ipc.of.podmanInstaller.on(
       'get-name',
       () => {
-        const res = cp.execSync('id -un');
-        ipc.of.podmanInstaller.emit('get-name-resp', res.toString('utf8'));
+        try{
+          let cmd = 'id -un'
+          if(os.platform() === 'win32') {
+            cmd = `fltmc >nul 2>&1 && (echo has admin permissions) || (echo has NOT admin permissions)`;
+          }
+          const res = cp.execSync(cmd);
+          ipc.of.podmanInstaller.emit('get-name-resp', res.toString('utf8'));
+        } catch(err) {
+          ipc.log(err);
+        }
       }
     )
   })
