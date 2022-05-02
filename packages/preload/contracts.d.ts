@@ -2,6 +2,7 @@
 
 interface Exposed {
   readonly versions: Readonly<typeof import('./src/versions').versions>;
+  readonly runSudo: Readonly<typeof import('./src/runSudo').versions>;
 }
 
 

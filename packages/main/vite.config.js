@@ -37,6 +37,10 @@ const config = {
       output: {
         entryFileNames: '[name].cjs',
       },
+      input: {
+        sudoMain: join(PACKAGE_ROOT, 'src/sudo/main-sudo.ts'),
+        index: join(PACKAGE_ROOT, 'src/index.ts'),
+      },
     },
     emptyOutDir: true,
     brotliSize: false,

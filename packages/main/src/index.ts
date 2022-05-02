@@ -1,6 +1,8 @@
-import {app} from 'electron';
+import {app, dialog, ipcMain} from 'electron';
 import './security-restrictions';
 import {restoreOrCreateWindow} from '/@/mainWindow';
+import * as sudo from 'sudo-prompt';
+import { initIpc, startCheck } from './ipc-main';
 
 
 /**
@@ -66,3 +68,30 @@ if (import.meta.env.PROD) {
     .catch((e) => console.error('Failed check updates:', e));
 }
 
+ipcMain.on('run-sudo', async () => {
+  try {
+    initIpc().then(async (api) => {
+      const res = await api.startCheck();
+      dialog.showMessageBox({title: 'Sudo', message: `Current sudo user: ${res}`});
+      api.exit();
+    });
+
+    let execPath = process.execPath;
+    execPath +=  ' ' + __dirname + '/' + 'sudoMain.cjs';
+    sudo.exec(execPath, {name: "podman installer", env: { ELECTRON_RUN_AS_NODE: "1"}}, (error, stdout, stderr) => {
+      if(error) {
+        console.error(error);
+      }
+
+      if(stderr) {
+        console.error(stderr);
+      }
+
+      console.warn(stdout);
+    });
+
+
+  } catch(err) {
+    console.error(err);
+  }
+});

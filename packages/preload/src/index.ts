@@ -3,3 +3,4 @@
  */
 
 import './versions';
+import './runSudo';
