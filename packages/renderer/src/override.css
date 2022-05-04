@@ -1,0 +1,35 @@
+
+:root {
+    --pf-global--primary-color--100: #6d28d9;
+    --pf-global--primary-color--light-100: #6d28d9;
+    --pf-global--primary-color--dark-100: #6d28d9;
+
+    --pf-global--primary-color--200: #5b21b6;
+    --pf-global--primary-color--light-200: #5b21b6;
+    --pf-global--primary-color--dark-200: #5b21b6;
+
+    --pf-global--primary-color--300: #6d28d9;
+    --pf-global--primary-color--light-300: #6d28d9;
+    --pf-global--primary-color--dark-300: #6d28d9;
+
+    --pf-global--BackgroundColor--300: #322532;
+
+    --pf-c-form__helper-text--m-error--Color: #FF0000;
+
+    --pf-global--BackgroundColor: #ff0000;
+
+    --pf-global--palette--purple-700: #1c131b;
+}
+
+.pf-c-button.pf-m-secondary {
+    --pf-c-button--m-secondary--Color: rgb(71, 8, 90);
+    --pf-c-button--m-secondary--BackgroundColor: rgba(214, 154, 240, 0.507);
+}
+
+.bg-purple-500 {
+  background-color: var(--pf-global--BackgroundColor--300);
+}
+
+.bg-purple-700 {
+  background-color: var(--pf-global--palette--purple-700);
+}

@@ -25,10 +25,16 @@
     "typecheck": "yarn run typecheck:main && yarn run typecheck:preload && yarn run typecheck:renderer"
   },
   "devDependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^6.1.0",
+    "@patternfly/patternfly": "^4.179.1",
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
     "@tsconfig/svelte": "^2.0.1",
     "@types/node-ipc": "^9.2.0",
+    "@types/pify": "^5.0.1",
+    "@types/winreg": "^1.2.31",
     "@typescript-eslint/eslint-plugin": "5.12.0",
+    "autoprefixer": "^10.4.2",
     "cross-env": "7.0.3",
     "electron": "17.0.1",
     "electron-builder": "22.14.13",
@@ -37,10 +43,15 @@
     "happy-dom": "2.33.1",
     "nano-staged": "0.5.0",
     "playwright": "1.19.1",
+    "postcss": "^8.4.5",
+    "postcss-import": "^14.1.0",
+    "postcss-load-config": "^3.1.1",
     "simple-git-hooks": "2.7.0",
     "svelte": "^3.44.1",
     "svelte-check": "^2.2.8",
+    "svelte-fa": "^2.4.0",
     "svelte-preprocess": "^4.9.8",
+    "tailwindcss": "^3.0.19",
     "tslib": "^2.3.1",
     "typescript": "4.5.5",
     "vite": "2.8.3",
@@ -49,6 +60,8 @@
   "dependencies": {
     "electron-updater": "4.6.5",
     "node-ipc": "^11.1.0",
-    "sudo-prompt": "^9.2.1"
+    "pify": "^5.0.0",
+    "sudo-prompt": "^9.2.1",
+    "winreg": "^1.2.4"
   }
 }

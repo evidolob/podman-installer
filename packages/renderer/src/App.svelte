@@ -1,65 +1,34 @@
 <script lang="ts">
-  import logo from './assets/svelte.png'
-  import Counter from './lib/Counter.svelte'
+  import './app.css';
+  import '@patternfly/patternfly/patternfly.css';
+  import '@patternfly/patternfly/patternfly-addons.css';
+  import '@patternfly/patternfly/patternfly-theme-dark.css';
+  import './override.css';
+  import Logo from './lib/logo/Logo.svelte';
 </script>
 
-<main>
-  <img src={logo} alt="Svelte Logo" />
-  <h1>Hello Electron!</h1>
+<main class="min-h-screen flex flex-col h-screen bg-purple-500">
+  <header id="navbar" class="text-gray-400 bg-zinc-900 body-font" style="-webkit-app-region: drag;">
+    <div class="container flex mx-auto flex-col p-2 items-center">
+      <div class="flex lg:w-1/5 flex-wrap items-center text-base ml-auto"></div>
+      <div
+        class="flex order-none title-font font-medium items-center text-white align-middle justify-center mb-4 md:mb-0">
+        <Logo />
+        <span class="ml-3 text-xl block text-gray-300">Podman Installer</span>
+      </div>
+      <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0"></div>
+    </div>
+  </header>
 
-  <Counter />
-
-  <p>
-    Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte
-    apps.
-  </p>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme">SvelteKit</a> for
-    the officially supported framework, also powered by Vite!
-  </p>
+  <div class="overflow-x-hidden flex flex-1">
+    <nav
+    class="pf-c-nav z-0 group bg-purple-700 w-12 md:w-52 hover:w-52  shadow  flex-col justify-between sm:flex transition-all duration-500 ease-in-out"
+    aria-label="Global">
+      <ul class="pf-c-nav__list">
+        <li class="pf-c-nav__item flex w-full justify-between hover:text-gray-300 dark:text-white pf-m-current cursor-pointer items-center mb-6">
+            <span class="md:block group-hover:block mr-5">Welcome</span>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </main>
-
-<style>
-  :root {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  }
-
-  main {
-    text-align: center;
-    padding: 1em;
-    margin: 0 auto;
-  }
-
-  img {
-    height: 16rem;
-    width: 16rem;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4rem;
-    font-weight: 100;
-    line-height: 1.1;
-    margin: 2rem auto;
-    max-width: 14rem;
-  }
-
-  p {
-    max-width: 14rem;
-    margin: 1rem auto;
-    line-height: 1.35;
-  }
-
-  @media (min-width: 480px) {
-    h1 {
-      max-width: none;
-    }
-
-    p {
-      max-width: none;
-    }
-  }
-</style>
